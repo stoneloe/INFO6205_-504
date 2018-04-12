@@ -69,5 +69,4 @@ public class Problem {
         this.points = points;
     }
     
-    
 }

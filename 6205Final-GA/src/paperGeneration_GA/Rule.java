@@ -23,7 +23,7 @@ public class Rule {
     
     private Set<Integer> points;
     
-    //5 types of problems in total
+    //5 types of problems in total,lenghth would be 5
     private int[] eachTypeCount;
 
     public long getId() {

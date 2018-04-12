@@ -35,7 +35,7 @@ public class Population {
                     //each type number constraint:
                     for (int j = 0; j < eachTypeCount.length; j++) {
                         List<Problem> oneTypeProblem = getOneTypeProblems(DB, j);
-                        Problem temp = new Problem();
+                        Problem temp;
                         //generate problem without duplicates:
                         for (int k = 0; k < eachTypeCount[j]; k++) {
                             temp = generateProblem(oneTypeProblem, random);
@@ -80,4 +80,10 @@ public class Population {
         }
         return oneTypeProblem;
     }
+
+    public List<Paper> getPapers() {
+        return papers;
+    }
+    
+    
 }

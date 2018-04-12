@@ -24,11 +24,11 @@ public class ProblemDB {
         problemDB = new ArrayList<>();
         //New 5000 different problem:
         Problem p;
+        Random rd = new Random(20);
         for (int i = 1; i <= 5000; i++) {
             p = new Problem();
             p.setId(i);
 
-            Random rd = new Random(1);
             //new a difficulty from 0.3~1
             Double d = (rd.nextInt(70) + 30) * 0.01;
             p.setDifficulty(d);
@@ -55,7 +55,7 @@ public class ProblemDB {
             if (i > 3000 && i < 4001) {
                 p.setType(4);
                 int s = rd.nextInt(4) + 1;
-                p.setScore(i);
+                p.setScore(s);
             }
 
             //1000 type 5 problems: score is difficulty*10
