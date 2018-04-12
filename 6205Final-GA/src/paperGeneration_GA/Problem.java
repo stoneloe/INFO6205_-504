@@ -5,6 +5,7 @@
  */
 package paperGeneration_GA;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -25,6 +26,9 @@ public class Problem {
     
     private Set<Integer> points;
 
+    public Problem(){
+        points = new HashSet<>();
+    }
     public int getId() {
         return id;
     }

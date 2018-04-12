@@ -66,7 +66,7 @@ public class ProblemDB {
             }
 
             //knowledge point count for problem from 1~4:
-            Set<Integer> points = new HashSet<>();
+            Set<Integer> points = p.getPoints();
             int count = rd.nextInt(4) + 1;
             for (int j = 0; j < count; j++) {
                 //100 points in total
@@ -82,4 +82,9 @@ public class ProblemDB {
             problemDB.add(p);
         }
     }
+
+    public List<Problem> getProblemDB() {
+        return problemDB;
+    }
+    
 }
