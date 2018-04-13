@@ -3,21 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paperGeneration_GA;
-
+package PaperGeneration;
 
 /**
  *
  * @author houxiaoge
  */
-public class GA {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-    }
-
+//Define the weight for KPCoverage and Difficulty
+public class GlobalWeight {
+    
+    public static final double KP_WEIGHT = 0.20;
+    
+    public static final double DIFFCULTY_WEIGHt = 0.80;
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paperGeneration_GA;
+package PaperGeneration;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -51,7 +51,7 @@ public class ProblemDB {
                 p.setScore(2);
             }
 
-            //1000 type 4 problems: blanks 1-4 score
+            //1000 type 4 problems: blank completion 1-4 score
             if (i > 3000 && i < 4001) {
                 p.setType(4);
                 int s = rd.nextInt(4) + 1;
