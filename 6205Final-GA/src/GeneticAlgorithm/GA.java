@@ -6,6 +6,8 @@
 package GeneticAlgorithm;
 
 import PaperGeneration.*;
+import java.util.List;
+import java.util.Random;
 
 /**
  *
@@ -42,7 +44,7 @@ public class GA {
         Paper tmpPaper;
         for (int i = elitismOffset; i < newPopulation.getPapers().size(); i++) {
             tmpPaper = newPopulation.getPapers().get(i);
-            mutate(tmpPaper);
+            mutate(newPopulation, tmpPaper);
             // Calculate KP Coverage and Adaptation Degree
             tmpPaper.setKPCoverage(rule);
             tmpPaper.setAdaptationDegree(rule, GlobalWeight.KP_WEIGHT, GlobalWeight.DIFFCULTY_WEIGHt);
@@ -62,7 +64,24 @@ public class GA {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private static void mutate(Paper tmpPaper) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private static void mutate(Population population, Paper paper) {
+        Random random = new Random();
+        for(Problem p : paper.getProblemList()){
+            if(Math.random() < mutationRate){
+               List<Problem> problemList = population.getProblemTypeListWithoutItself(p);
+               if (problemList.size() > 0) {
+                    // get a problem randomly                   
+                    paper.getProblemList().remove(p);                  
+                    int index = random.nextInt(problemList.size());
+                    Problem problem = problemList.get(index);
+                    while(paper.getProblemList().contains(problem)){
+                        index = random.nextInt(problemList.size());
+                        problem = problemList.get(index);
+                    }
+                    paper.getProblemList().add(problem);
+                                       
+                }
+            }
+        }
     }
 }
