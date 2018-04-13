@@ -16,6 +16,10 @@ import java.util.Random;
 public class Population {
 
     private List<Paper> papers;
+    
+    public Population() {
+        papers = new ArrayList<>();
+    }
 
     public Population(int populationSize, boolean initFlag, Rule rule) {
 
@@ -80,5 +84,9 @@ public class Population {
         return papers;
     }
     
-    
+    public void addPaper(int index, Paper paper){      
+        paper.setId(index);
+        papers.add(paper);
+    }
+       
 }
