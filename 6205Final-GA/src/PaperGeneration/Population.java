@@ -16,6 +16,7 @@ import java.util.Random;
 public class Population {
 
     private List<Paper> papers;
+    private ProblemDB DB;
     
     public Population() {
         papers = new ArrayList<>();
@@ -23,7 +24,7 @@ public class Population {
 
     public Population(int populationSize, boolean initFlag, Rule rule) {
 
-        ProblemDB DB = new ProblemDB();
+        DB = new ProblemDB();
         papers = new ArrayList<>();
         int[] eachTypeCount = rule.getEachTypeCount();
 
@@ -78,6 +79,17 @@ public class Population {
             oneTypeProblem.add(DB.getProblemDB().get(i));
         }
         return oneTypeProblem;
+    }
+    
+    public List<Problem> getProblemTypeListWithoutItself(Problem problem){
+        List<Problem> p = new ArrayList<>();
+        for(Problem prob : DB.getProblemDB()){
+            if(prob.getType() == problem.getType() && prob.getScore() == problem.getScore()){
+                p.add(prob);
+            }
+        }
+        p.remove(problem);
+        return p;
     }
 
     public List<Paper> getPapers() {
