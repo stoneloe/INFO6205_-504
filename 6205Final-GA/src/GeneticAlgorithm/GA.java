@@ -50,9 +50,13 @@ public class GA {
         return newPopulation;
     }
 
-    private static Paper select(Population pop) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    private static Paper select(Population population) {
+        Population pop = new Population();
+        for (int i = 0; i < tournamentSize; i++) {
+            pop.addPaper(i, population.getPapers().get((int) (Math.random() * population.getPapers().size())));
+        }
+        return pop.getBestFitnessPaper();
+        }
 
     private static Paper crossover(Paper parent1, Paper parent2, Rule rule) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
