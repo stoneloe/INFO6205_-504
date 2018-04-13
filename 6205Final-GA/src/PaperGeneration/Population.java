@@ -6,6 +6,8 @@
 package PaperGeneration;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -61,7 +63,7 @@ public class Population {
 
     //get the best fitness unit(paper):
     public Paper getBestFitnessPaper() {
-        papers.sort((Paper p1, Paper p2) -> (int)p2.getAdaptationDegree() - (int)p1.getAdaptationDegree());
+        papers.sort(Comparator.comparingDouble(Paper::getAdaptationDegree).reversed());
         return papers.get(0);
     }
 
