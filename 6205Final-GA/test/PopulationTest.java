@@ -3,9 +3,9 @@ import java.util.HashSet;
 import java.util.Set;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import paperGeneration_GA.Paper;
-import paperGeneration_GA.Population;
-import paperGeneration_GA.Rule;
+import PaperGeneration.Paper;
+import PaperGeneration.Population;
+import PaperGeneration.Rule;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

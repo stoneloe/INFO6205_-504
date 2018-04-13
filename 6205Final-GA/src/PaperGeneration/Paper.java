@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paperGeneration_GA;
+package PaperGeneration;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -55,7 +55,7 @@ public class Paper {
         return totalScore;
     }
 
-    //eachDif*eachScore/totalScore
+    //sum(eachDif * eachScore)/totalScore
     public double getDifficulty() {
         double dif = 0;
         for (Problem p : problemList) {
@@ -85,8 +85,9 @@ public class Paper {
         return KPCoverage;
     }
 
-    //Set unit adaptation: f = 1-(1-M/N)*f1-|EP-P|*f2
-    //M/N is KPCoverage, EP is difficulty expectation, P is unit difficulty, f1 is KPCoverage weight, f2 is difficulty weight
+    // Set unit adaptation: f = 1-(1-M/N)*f1-|EP-P|*f2
+    // M/N is KPCoverage, EP is difficulty expectation, P is unit difficulty
+    // f1 is KPCoverage weight, f2 is difficulty weight
     public void setAdaptationDegree(Rule rule, double f1, double f2) {
         adaptationDegree = 1 - (1 - getKPCoverage()) * f1 - Math.abs(rule.getDifficulty() - getDifficulty()) * f2;
     }

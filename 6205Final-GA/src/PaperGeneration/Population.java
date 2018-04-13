@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paperGeneration_GA;
+package PaperGeneration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,14 +55,9 @@ public class Population {
     }
 
     //get the best fitness unit(paper):
-    public Paper getFitness() {
-        Paper paper = papers.get(0);
-        for (Paper p : papers) {
-            if (paper.getAdaptationDegree() < p.getAdaptationDegree()) {
-                paper = p;
-            }
-        }
-        return paper;
+    public Paper getBestFitnessPaper() {
+        papers.sort((Paper p1, Paper p2) -> (int)p2.getAdaptationDegree() - (int)p1.getAdaptationDegree());
+        return papers.get(0);
     }
 
     private Problem generateProblem(List<Problem> oneTypeProblem, Random random) {
