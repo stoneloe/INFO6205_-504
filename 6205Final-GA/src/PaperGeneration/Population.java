@@ -61,6 +61,14 @@ public class Population {
         }
     }
 
+    public ProblemDB getDB() {
+        return DB;
+    }
+
+    public void setDB(ProblemDB DB) {
+        this.DB = DB;
+    }
+
     //get the best fitness unit(paper):
     public Paper getBestFitnessPaper() {
         papers.sort(Comparator.comparingDouble(Paper::getAdaptationDegree).reversed());

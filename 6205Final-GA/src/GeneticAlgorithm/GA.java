@@ -24,6 +24,7 @@ public class GA {
 
     public static Population evolvePopulation(Population pop, Rule rule) {
         Population newPopulation = new Population();
+        newPopulation.setDB(pop.getDB());
         // Apply Elite Evolutionary Method
         if (elitism) {
             elitismOffset = 1;
@@ -40,7 +41,7 @@ public class GA {
                 parent2 = select(pop);
             }
             // Crossover
-            Paper child = crossover(parent1, parent2, rule);            
+            Paper child = crossover(parent1, parent2, rule, newPopulation);
             newPopulation.addPaper(i, rule, child);
         }
         // Mutate
@@ -62,8 +63,8 @@ public class GA {
         }
         return pop.getBestFitnessPaper();
     }
-    
-    public static int[] generatePoints(List<Problem> paper1, List<Problem> paper2){
+
+    public static int[] generatePoints(List<Problem> paper1, List<Problem> paper2) {
         // Choose two points randomly
         int[] points = new int[2];
         int s1 = random.nextInt(paper1.size());
@@ -73,17 +74,16 @@ public class GA {
         }
         points[0] = s1 < s2 ? s1 : s2;
         points[1] = s1 > s2 ? s1 : s2;
-        
-        if(isScoreEqual(points, paper1, paper2)){
-            return points;  
-        }
-        else{
+
+        if (isScoreEqual(points, paper1, paper2)) {
+            return points;
+        } else {
             generatePoints(paper1, paper2);
-        }  
+        }
         return null;
     }
-    
-    public static boolean isScoreEqual(int[] points, List<Problem> paper1, List<Problem> paper2){
+
+    public static boolean isScoreEqual(int[] points, List<Problem> paper1, List<Problem> paper2) {
         // ensure the score between s1 and s2 of parent1 is equal to that of parent2
         int total_p1 = 0;
         int total_p2 = 0;
@@ -94,8 +94,8 @@ public class GA {
         return total_p1 == total_p2;
     }
 
-    public static Paper crossover(Paper parent1, Paper parent2, Rule rule) {
-        Paper child = new Paper();       
+    public static Paper crossover(Paper parent1, Paper parent2, Rule rule, Population pop) {
+        Paper child = new Paper();
         // Save problems into list
         List<Problem> paper1 = new ArrayList<>();
         for (Problem p : parent1.getProblemList()) {
@@ -107,22 +107,39 @@ public class GA {
         }
         paper1.sort((p1, p2) -> p1.getId() - p2.getId());
         paper2.sort((p1, p2) -> p1.getId() - p2.getId());
-        
+
         int[] points = generatePoints(paper1, paper2);
-        
+
         // Copy problems from paper1 except problems between this two points
-        for(int i = 0; i< points[0]; i++){
+        for (int i = 0; i < points[0]; i++) {
             child.getProblemList().add(paper1.get(i));
         }
-        for(int i = points[1]; i < paper1.size(); i++){
+        for (int i = points[1]; i < paper1.size(); i++) {
             child.getProblemList().add(paper1.get(i));
         }
         // Copy problems from paper2 between two points
-        for(int i = points[0]; i < points[1]; i++){
-            
+        for (int i = points[0]; i < points[1]; i++) {
+            Problem problem = paper2.get(i);
+            if (!child.getProblemList().contains(problem)) {
+                child.getProblemList().add(problem);
+            } else {
+                List<Problem> problemList = pop.getProblemTypeListWithoutItself(problem);
+                if (problemList.size() > 0) {
+                    // get a problem randomly                   
+                    int index = random.nextInt(problemList.size());
+                    Problem p = problemList.get(index);
+                    while (child.getProblemList().contains(p)) {
+                        index = random.nextInt(problemList.size());
+                        p = problemList.get(index);
+                    }
+                    child.getProblemList().add(p);
+                } 
+                else {
+                    throw new UnknownError("Cannot find problem with same type and score when generate new paper. ");
+                }
+            }
         }
-
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return child;
     }
 
     private static void mutate(Population population, Paper paper) {
