@@ -2,8 +2,8 @@
 This project is going to figure out a way to `compose test paper automatically` based on genetic algorithm. Like extracting 40 problems randomly from problem database to compose a paper whose total score is 100, expect total difficulty is 0.75 and knowledge points coverage is 0.8.<br> 
 In our project, entities in the process of composing paper like `problem`, `paper`, `population`(paper generation/a list of papers) are mapped into basic concept of genetic algorithm like `gene`, `unit`, `population`, then papers generated and envolved based on specific rules and expectations. Finally, the opitmized result would be got. The test final output is showed up below.
 ****
-<img src="https://github.com/xiaogehou/INFO6205_-504/blob/master/images/settings.jpg" width="50%" alt="Settings" align=left>
-<img src="https://github.com/xiaogehou/INFO6205_-504/blob/master/images/result.jpg" width="50%" alt="Result" align=left>
+<img src="https://github.com/xiaogehou/INFO6205_-504/blob/master/images/settings.jpg" width="50%" alt="Settings" align=left />
+<img src="https://github.com/xiaogehou/INFO6205_-504/blob/master/images/result.jpg" width="50%" alt="Result" align=left />
 <!-- ![setting](https://github.com/xiaogehou/INFO6205_-504/blob/master/images/settings.jpg)
 ![result](https://github.com/xiaogehou/INFO6205_-504/blob/master/images/result.jpg) -->
 ****
