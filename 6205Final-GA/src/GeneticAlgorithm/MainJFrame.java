@@ -7,6 +7,7 @@ package GeneticAlgorithm;
 
 import PaperGeneration.Paper;
 import PaperGeneration.Population;
+import PaperGeneration.Problem;
 import PaperGeneration.Rule;
 import java.util.HashSet;
 import java.util.List;
@@ -492,6 +493,12 @@ public class MainJFrame extends javax.swing.JFrame {
             fitnessTextField.setText(String.valueOf(finalPaper.getAdaptationDegree()));
             
             logger.info(finalPaper.toString());
+            
+            //print out all problem id in final paper:
+            System.out.println("Final paper problems' ids:");
+            for(Problem p : finalPaper.getProblemList()){
+                System.out.println("["+p.getId()+"] ");
+            }
         }
         
         
