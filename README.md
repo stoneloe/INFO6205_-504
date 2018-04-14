@@ -5,18 +5,18 @@ In our project, entities in the process of composing paper like `problem`, `pape
 [output screenshot]
 ****
 ## Classes design and explainations
-* Gene code: `Problem` class
+* __Gene code: `Problem` class__
 `Problem` is mapped to the `gene` in GA algorithm. 
-* Gene expression: `Paper` class
+* __Gene expression: `Paper` class__
 `Paper` is the unit which is composed by a set of `problem(Genes)`. Its traits include `totalScore`, `diffculty`, `KPCoverage`(knowledge point coverage) and `adaptationDegree`(fitness).
-* Fitness function: `adaptationDegree` in `Paper` class
+* __Fitness function: `adaptationDegree` in `Paper` class__
 In our project paper's fitness is defined by traits of `difficulty` and `KPCoverage`.<br> 
-Unit adaptation: `f = 1-(1-M/N)*f1-|EP-P|*f2`<br> 
+__Unit adaptation__: `f = 1-(1-M/N)*f1-|EP-P|*f2`<br> 
 `M/N` is KPCoverage, `EP` is difficulty expectation, `P` is unit difficulty.<br> 
 `f1` is KPCoverage weight, `f2` is difficulty weight
-* Sort function: `getBestFitnessPaper()` function in `Population` class
+* __Sort function: `getBestFitnessPaper()` function in `Population` class__
 `Population` class is the generation of papers, a list of papers. The `getBestFitnessPaper()` function is going to sort papers by fitness and get the best fitness candidate. Which would be used in selection process in evolution.
-* Evolution mechanism: `GA` class
+* __Evolution mechanism: `GA` class__
 In `GA` class, we defined the process of evolution:<br> 
 1. Initialize population based on given rules.
 2. Elitism: the best fitness paper could be added to the next generation directly.
