@@ -28,3 +28,8 @@ In `GA` class, we defined the process of evolution:<br>
 4. Crossover process to generate new paper.(Select a section with the same score to exchange from father and mother)
 5. The new generation mutate in specific mutateRate.(Select a gene/problem randomly to change with another gene had the same score)
 6. Repeat revolution and get expect result
+
+## References
+> http://www.cnblogs.com/artwl/archive/2011/05/20/2052262.html
+> https://www.jianshu.com/p/7fe9d3bb00ac
+> https://github.com/jslixiaolin/GADemo
