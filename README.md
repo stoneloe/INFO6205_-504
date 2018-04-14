@@ -30,6 +30,6 @@ In `GA` class, we defined the process of evolution:<br>
 6. Repeat revolution and get expect result
 
 ## References
-> http://www.cnblogs.com/artwl/archive/2011/05/20/2052262.html
-> https://www.jianshu.com/p/7fe9d3bb00ac
+> http://www.cnblogs.com/artwl/archive/2011/05/20/2052262.html<br>
+> https://www.jianshu.com/p/7fe9d3bb00ac<br>
 > https://github.com/jslixiaolin/GADemo
