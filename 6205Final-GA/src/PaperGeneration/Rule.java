@@ -17,6 +17,8 @@ public class Rule {
     
     private long id;
     
+    private static long count = 1;
+    
     private int total;
     
     private double difficulty;
@@ -25,13 +27,13 @@ public class Rule {
     
     //5 types of problems in total,lenghth would be 5
     private int[] eachTypeCount;
+    
+    public Rule(){
+        id = count++;
+    }
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public int getTotal() {

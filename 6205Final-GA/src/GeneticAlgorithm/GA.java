@@ -23,7 +23,7 @@ public class GA {
 
     private static boolean elitism = true;
     private static int tournamentSize = 5;
-    private static double mutationRate = 0.085;
+    private static double mutationRate = 0.00005;
     private static int elitismOffset;
     private static Random random = new Random();
 
