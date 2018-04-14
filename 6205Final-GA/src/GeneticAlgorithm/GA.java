@@ -21,24 +21,24 @@ import javax.print.attribute.HashAttributeSet;
  */
 public class GA {
 
-    private static boolean elitism = true;
+    private static boolean isElitism = true;
     private static int tournamentSize = 5;
     private static double mutationRate = 0.00005;
-    private static int elitismOffset;
+    private static int elitism;
     private static Random random = new Random();
 
     public static Population evolvePopulation(Population pop, Rule rule) {
         Population newPopulation = new Population();
         newPopulation.setDB(pop.getDB());
         // Apply Elite Evolutionary Method
-        if (elitism) {
-            elitismOffset = 1;
+        if (isElitism) {
+            elitism = 1;
             // Keep the best fitness paper of the last generation
             Paper bestFitnessPaper = pop.getBestFitnessPaper();
             newPopulation.addPaper(0, rule, bestFitnessPaper);
         }
         // Crossover to generate new generation
-        for (int i = elitismOffset; i < pop.getPapers().size(); i++) {
+        for (int i = elitism; i < pop.getPapers().size(); i++) {
             // Select parents
             Paper parent1 = select(pop);
             Paper parent2 = select(pop);
@@ -51,7 +51,7 @@ public class GA {
         }
         // Mutate
         Paper tmpPaper;
-        for (int i = elitismOffset; i < newPopulation.getPapers().size(); i++) {
+        for (int i = elitism; i < newPopulation.getPapers().size(); i++) {
             tmpPaper = newPopulation.getPapers().get(i);
             mutate(newPopulation, tmpPaper);
             // Calculate KP Coverage and Adaptation Degree
