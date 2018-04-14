@@ -30,6 +30,8 @@ In `GA` class, we defined the process of evolution:<br>
 6. Repeat revolution and get expect result
 
 ## References
+> https://towardsdatascience.com/introduction-to-genetic-algorithms-including-example-code-e396e98d8bf3<br>
 > http://www.cnblogs.com/artwl/archive/2011/05/20/2052262.html<br>
 > https://www.jianshu.com/p/7fe9d3bb00ac<br>
-> https://github.com/jslixiaolin/GADemo
+> https://github.com/jslixiaolin/GADemo<br>
+> https://ieeexplore.ieee.org/document/5982470/?reload=true&arnumber=5982470
