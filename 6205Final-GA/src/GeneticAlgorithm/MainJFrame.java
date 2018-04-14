@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 import static java.util.logging.Logger.getLogger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -434,7 +435,12 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void ComposeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComposeButtonActionPerformed
 
-        //set rule:
+        if(DifficultyTextField.getText().isEmpty() || GradeTextField.getText().isEmpty() || PaperAmountTextField.getText().isEmpty() ||
+                maxtimesTextField.getText().isEmpty() || expectedFitnessTextField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please enter all fields");
+            return;
+        }
+        // set rule:
         Rule rule = new Rule();
         int[] eachTypeCount = {10, 5, 10, 10, 5};
         rule.setEachTypeCount(eachTypeCount);
@@ -454,9 +460,7 @@ public class MainJFrame extends javax.swing.JFrame {
         int count = 0;
         int runMax = Integer.parseInt(maxtimesTextField.getText());
         int run = runMax;
-        jTabbedPane1.setSelectedIndex(1);
-        // TODO: need validation
-        
+        jTabbedPane1.setSelectedIndex(1);       
         
         if(rule != null){
             //difficulty:
