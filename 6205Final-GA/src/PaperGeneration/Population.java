@@ -98,8 +98,10 @@ public class Population {
         return papers;
     }
     
-    public void addPaper(int index, Paper paper){      
+    public void addPaper(int index, Rule rule, Paper paper){      
         paper.setId(index);
+        paper.setKPCoverage(rule);
+        paper.setAdaptationDegree(rule, GlobalWeight.KP_WEIGHT, GlobalWeight.DIFFCULTY_WEIGHt);
         papers.add(paper);
     }
        
