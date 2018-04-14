@@ -32,7 +32,7 @@ In `GA` class, we defined the process of evolution:<br>
 3. Select 'father' and 'mother' by select function(select 5 papers randomly and return the best fitness paper among these 5 units)
 4. Crossover process to generate new paper.(Select a section with the same score to exchange from father and mother)
 5. The new generation mutate in specific mutateRate.(Select a gene/problem randomly to change with another gene had the same score)
-6. Repeat revolution and get expect result
+6. Repeat evolution and get expect result
 
 ## References
 > https://towardsdatascience.com/introduction-to-genetic-algorithms-including-example-code-e396e98d8bf3<br>
