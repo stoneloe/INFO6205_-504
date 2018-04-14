@@ -96,4 +96,11 @@ public class Paper {
         return adaptationDegree;
     }
 
+    @Override
+    public String toString() {
+        return "Paper{" + "Id=" + Id + ", totalScore=" + totalScore + ", difficulty=" + difficulty + ", KPCoverage=" + KPCoverage + ", adaptationDegree=" + adaptationDegree + '}';
+    }
+
+    
+
 }

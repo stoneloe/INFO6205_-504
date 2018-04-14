@@ -67,6 +67,13 @@ public class Rule {
     public void setEachTypeCount(int[] eachTypeCount) {
         this.eachTypeCount = eachTypeCount;
     }
+
+    @Override
+    public String toString() {
+        return "Rule{" + "id=" + id + ", total=" + total + ", difficulty=" + difficulty + '}';
+    }
+
+    
     
     
 }

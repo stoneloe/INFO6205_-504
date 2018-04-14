@@ -11,6 +11,8 @@ import PaperGeneration.Rule;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
+import static java.util.logging.Logger.getLogger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
+    private static Logger logger = getLogger("EvolutionLog");
     /**
      * Creates new form MainJFrame
      */
@@ -442,6 +445,7 @@ public class MainJFrame extends javax.swing.JFrame {
             pointset.add((int) (Math.random() * 100 + 1));
         }        
         rule.setPoints(pointset);
+        logger.info(rule.toString());
         
         //evolve parameters:
         int size = Integer.parseInt(PaperAmountTextField.getText());
@@ -469,7 +473,10 @@ public class MainJFrame extends javax.swing.JFrame {
                 population = GA.evolvePopulation(population, rule);
                 
                 dtm.addRow(new Object[]{count,population.getBestFitnessPaper().getAdaptationDegree()});
+                logger.info("Evolution: "+count+" Best Adaptatoin Degree is "+population.getBestFitnessPaper().getAdaptationDegree());
 //                System.out.println("Evolution " + count + ": Adaption Degree is " + population.getBestFitnessPaper().getAdaptationDegree());
+
+
             }
             
             Paper finalPaper = population.getBestFitnessPaper();
@@ -484,6 +491,7 @@ public class MainJFrame extends javax.swing.JFrame {
             diffTextfield.setText(String.valueOf(finalPaper.getDifficulty()));
             fitnessTextField.setText(String.valueOf(finalPaper.getAdaptationDegree()));
             
+            logger.info(finalPaper.toString());
         }
         
         
