@@ -77,28 +77,6 @@ public class GA {
         return pop;
     }
 
-    public static void mutation(Population population, Paper paper) {
-        Set<Problem> temp1 = new HashSet<>();
-        Set<Problem> temp2 = new HashSet<>();
-        for (Problem p : paper.getProblemList()) {
-            List<Problem> problemList = population.getProblemTypeListWithoutItself(p);
-            if (problemList.size() > 0) {
-                // get a problem randomly                   
-                temp1.add(p);
-                int index = random.nextInt(problemList.size());
-                Problem problem = problemList.get(index);
-                while (paper.getProblemList().contains(problem)) {
-                    index = random.nextInt(problemList.size());
-                    problem = problemList.get(index);
-                }
-                temp2.add(problem);
-
-            }
-        }
-        paper.getProblemList().removeAll(temp1);
-        paper.getProblemList().addAll(temp2);
-    }
-
     public static int[] generatePoints(List<Problem> paper1, List<Problem> paper2) {
         // Choose two points randomly
         int[] points = new int[2];

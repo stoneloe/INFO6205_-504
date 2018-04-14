@@ -9,6 +9,7 @@ import GeneticAlgorithm.GA;
 import PaperGeneration.*;
 import PaperGenerationTest.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import org.hamcrest.Matchers;
@@ -37,22 +38,25 @@ public class GATest {
     public void test2_mutation(){
         Paper paper = population.getPapers().get(3);
         int num1 = paper.getProblemCount();
-        
-        double d1 = paper.getDifficulty();
+        int score1 = paper.getTotalScore();
         List<Integer> id1 = new ArrayList<>();
         for(Problem p : paper.getProblemList()){
             id1.add(p.getId());
         }
         
-        GA.mutation(population, paper);
+        GA.mutate(population, paper);
         int num2 = paper.getProblemCount();
-        double d2 = paper.getDifficulty();
+        int score2 = paper.getTotalScore();
         List<Integer> id2 = new ArrayList<>();
         for(Problem p : paper.getProblemList()){
             id2.add(p.getId());
         }
+        Collections.sort(id1);
+        Collections.sort(id2);
+        
+        System.out.println(id1.toString()+"\n"+id2.toString());
         assertEquals(num1, num2);
-        assertNotEquals(d1, d2);
+        assertEquals(score1, score2);
     }
     
     @Test
