@@ -61,6 +61,14 @@ public class Population {
         }
     }
 
+    public ProblemDB getDB() {
+        return DB;
+    }
+
+    public void setDB(ProblemDB DB) {
+        this.DB = DB;
+    }
+
     //get the best fitness unit(paper):
     public Paper getBestFitnessPaper() {
         papers.sort(Comparator.comparingDouble(Paper::getAdaptationDegree).reversed());
@@ -98,8 +106,10 @@ public class Population {
         return papers;
     }
     
-    public void addPaper(int index, Paper paper){      
+    public void addPaper(int index, Rule rule, Paper paper){      
         paper.setId(index);
+        paper.setKPCoverage(rule);
+        paper.setAdaptationDegree(rule, GlobalWeight.KP_WEIGHT, GlobalWeight.DIFFCULTY_WEIGHt);
         papers.add(paper);
     }
        
