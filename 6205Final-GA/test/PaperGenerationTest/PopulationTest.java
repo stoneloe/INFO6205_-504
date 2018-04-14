@@ -44,6 +44,7 @@ public class PopulationTest {
         int[] eachTypeCount = {10, 5, 10, 10, 5};
         rule.setEachTypeCount(eachTypeCount);
         rule.setTotal(100);
+        rule.setDifficulty(0.89);
         Set<Integer> pointset = new HashSet<>();
         for(int i = 0; i < 20; i++){
             pointset.add((int) (Math.random() * 100 + 1));
