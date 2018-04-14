@@ -37,8 +37,7 @@ public class GATest {
     public void test2_mutation(){
         Paper paper = population.getPapers().get(3);
         int num1 = paper.getProblemCount();
-        paper.setKPCoverage(paperRule);
-        double kp1 = paper.getKPCoverage();
+        
         double d1 = paper.getDifficulty();
         List<Integer> id1 = new ArrayList<>();
         for(Problem p : paper.getProblemList()){
@@ -47,15 +46,12 @@ public class GATest {
         
         GA.mutation(population, paper);
         int num2 = paper.getProblemCount();
-        paper.setKPCoverage(paperRule);
-        double kp2 = paper.getKPCoverage();
         double d2 = paper.getDifficulty();
         List<Integer> id2 = new ArrayList<>();
         for(Problem p : paper.getProblemList()){
             id2.add(p.getId());
         }
         assertEquals(num1, num2);
-        assertNotEquals(kp1, kp2);
         assertNotEquals(d1, d2);
     }
     
@@ -90,4 +86,27 @@ public class GATest {
         assertThat(fitness2, Matchers.greaterThanOrEqualTo(fitness1));
     }
     
+    @Test
+    public void test5_choosePoints(){
+        Paper parent1 = GA.select(population);
+        Paper parent2 = GA.select(population);
+        
+        List<Problem> paper1 = new ArrayList<>();
+        for (Problem p : parent1.getProblemList()) {
+            paper1.add(p);
+        }
+        List<Problem> paper2 = new ArrayList<>();
+        for (Problem p : parent2.getProblemList()) {
+            paper2.add(p);
+        }
+        paper1.sort((p1, p2) -> p1.getId() - p2.getId());
+        paper2.sort((p1, p2) -> p1.getId() - p2.getId());
+        
+        int[] points = GA.generatePoints(paper1, paper2);
+        
+        assertNotNull(points);
+        assertEquals(points.length, 2);
+        assertNotEquals(points[0], points[1]);
+        assertThat(points[1], Matchers.greaterThan(points[0]));
+    }
 }

@@ -112,10 +112,8 @@ public class GA {
 
         if (isScoreEqual(points, paper1, paper2)) {
             return points;
-        } else {
-            generatePoints(paper1, paper2);
-        }
-        return null;
+        } 
+        return generatePoints(paper1, paper2);
     }
 
     public static boolean isScoreEqual(int[] points, List<Problem> paper1, List<Problem> paper2) {
