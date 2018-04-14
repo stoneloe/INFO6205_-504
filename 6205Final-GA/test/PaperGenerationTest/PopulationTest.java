@@ -34,11 +34,11 @@ public class PopulationTest {
         assertThat(bestPaper.getAdaptationDegree(), Matchers.greaterThan(population.getPapers().get(1).getAdaptationDegree()));
     }
     
-    Rule paperRule = getRule();
-    Population population = getPopulation();
+    static Rule paperRule = getRule();
+    static Population population = getPopulation();
     
     
-    public Rule getRule(){
+    public static Rule getRule(){
         Rule rule = new Rule();
         rule.setId(1);
         int[] eachTypeCount = {10, 5, 10, 10, 5};
@@ -52,7 +52,7 @@ public class PopulationTest {
         return rule;
     }
     
-    public Population getPopulation(){       
+    public static Population getPopulation(){       
         Population p = new Population(20, true, paperRule);
         return p;
     }
