@@ -40,7 +40,6 @@ public class PopulationTest {
     
     public static Rule getRule(){
         Rule rule = new Rule();
-        rule.setId(1);
         int[] eachTypeCount = {10, 5, 10, 10, 5};
         rule.setEachTypeCount(eachTypeCount);
         rule.setTotal(100);

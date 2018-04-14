@@ -5,6 +5,11 @@
  */
 package GeneticAlgorithm;
 
+import PaperGeneration.Population;
+import PaperGeneration.Rule;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author MJHCHLOE
@@ -39,6 +44,11 @@ public class MainJFrame extends javax.swing.JFrame {
         DifficultyTextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         GradeTextField = new javax.swing.JTextField();
+        ComposeButton = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,11 +59,24 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Paper Amount:");
 
+        PaperAmountTextField.setText("1000");
+        PaperAmountTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PaperAmountTextFieldActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Paper Type Amount:");
+
+        TypeAmountTextField.setText("20");
 
         jLabel4.setText("Difficulty Degree:");
 
+        DifficultyTextField.setText("0.8");
+
         jLabel5.setText("Total grade:");
+
+        GradeTextField.setText("100");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -96,39 +119,135 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        ComposeButton.setText("Compose Paper");
+        ComposeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComposeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(171, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(246, 246, 246))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 120, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 120, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(195, 195, 195)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(289, 289, 289)
+                        .addComponent(ComposeButton)))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addContainerGap(387, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 123, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 124, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(ComposeButton)
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab2", jPanel1);
+        jTabbedPane1.addTab("Customerize Paper", jPanel1);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Generation", "Adaptation Degree"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel6.setText("Evolution Result");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(281, 281, 281)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(115, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(88, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Elvolution Result", jPanel3);
 
         getContentPane().add(jTabbedPane1, java.awt.BorderLayout.LINE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void PaperAmountTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaperAmountTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PaperAmountTextFieldActionPerformed
+
+    private void ComposeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComposeButtonActionPerformed
+
+        Rule rule = new Rule();
+        int[] eachTypeCount = {10, 5, 10, 10, 5};
+        rule.setEachTypeCount(eachTypeCount);
+        rule.setTotal(Integer.parseInt(GradeTextField.getText()));
+        double difficulty = Double.parseDouble(DifficultyTextField.getText());
+        rule.setDifficulty(difficulty);
+        Set<Integer> pointset = new HashSet<>();
+        for(int i = 0; i < 20; i++){
+            pointset.add((int) (Math.random() * 100 + 1));
+        }        
+        rule.setPoints(pointset);
+        int size = Integer.parseInt(PaperAmountTextField.getText());
+        double adaptation = 0.98; 
+        int count = 0;
+        int run = 100;
+        // TODO: need validation
+        if(rule != null){
+            
+            Population population = new Population(size, true, rule);
+            System.out.println("First adpation degree: " + population.getBestFitnessPaper().getAdaptationDegree());
+            while (count < run && population.getBestFitnessPaper().getAdaptationDegree() < adaptation) {
+                count++;
+                population = GA.evolvePopulation(population, rule);
+                System.out.println("Evolution " + count + ": Adaption Degree is " + population.getBestFitnessPaper().getAdaptationDegree());
+            }
+        }
+        
+        
+        
+    }//GEN-LAST:event_ComposeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,6 +285,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ComposeButton;
     private javax.swing.JTextField DifficultyTextField;
     private javax.swing.JTextField GradeTextField;
     private javax.swing.JTextField PaperAmountTextField;
@@ -175,8 +295,12 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
