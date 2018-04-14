@@ -38,7 +38,7 @@ public class GA {
             newPopulation.addPaper(0, rule, bestFitnessPaper);
         }
         // Crossover to generate new generation
-        for (int i = elitismOffset; i < newPopulation.getPapers().size(); i++) {
+        for (int i = elitismOffset; i < pop.getPapers().size(); i++) {
             // Select parents
             Paper parent1 = select(pop);
             Paper parent2 = select(pop);
