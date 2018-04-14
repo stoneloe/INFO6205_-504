@@ -8,12 +8,9 @@ package GeneticAlgorithm;
 import PaperGeneration.*;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-import java.util.concurrent.CopyOnWriteArrayList;
-import javax.print.attribute.HashAttributeSet;
 
 /**
  *
@@ -153,8 +150,8 @@ public class GA {
     }
 
     public static void mutate(Population population, Paper paper) {
-        Set<Problem> temp1 = new HashSet<>();
-        Set<Problem> temp2 = new HashSet<>();
+        List<Problem> temp1 = new ArrayList<>();
+        List<Problem> temp2 = new ArrayList<>();
         for (Problem p : paper.getProblemList()) {
             if (Math.random() < mutationRate) {
                 List<Problem> problemList = population.getProblemTypeListWithoutItself(p);
