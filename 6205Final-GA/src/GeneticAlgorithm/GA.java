@@ -7,8 +7,13 @@ package GeneticAlgorithm;
 
 import PaperGeneration.*;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
+import javax.print.attribute.HashAttributeSet;
 
 /**
  *
@@ -62,6 +67,36 @@ public class GA {
             pop.getPapers().add(population.getPapers().get((int) (Math.random() * population.getPapers().size())));
         }
         return pop.getBestFitnessPaper();
+    }
+
+    public static Population selection(Population population) {
+        Population pop = new Population();
+        for (int i = 0; i < tournamentSize; i++) {
+            pop.getPapers().add(population.getPapers().get((int) (Math.random() * population.getPapers().size())));
+        }
+        return pop;
+    }
+
+    public static void mutation(Population population, Paper paper) {
+        Set<Problem> temp1 = new HashSet<>();
+        Set<Problem> temp2 = new HashSet<>();
+        for (Problem p : paper.getProblemList()) {
+                List<Problem> problemList = population.getProblemTypeListWithoutItself(p);
+                if (problemList.size() > 0) {
+                    // get a problem randomly                   
+                    temp1.add(p);
+                    int index = random.nextInt(problemList.size());
+                    Problem problem = problemList.get(index);
+                    while (paper.getProblemList().contains(problem)) {
+                        index = random.nextInt(problemList.size());
+                        problem = problemList.get(index);
+                    }
+                    temp2.add(problem);
+
+                }
+        }
+        paper.getProblemList().removeAll(temp1);
+        paper.getProblemList().addAll(temp2);
     }
 
     public static int[] generatePoints(List<Problem> paper1, List<Problem> paper2) {
@@ -133,8 +168,7 @@ public class GA {
                         p = problemList.get(index);
                     }
                     child.getProblemList().add(p);
-                } 
-                else {
+                } else {
                     throw new UnknownError("Cannot find problem with same type and score when generate new paper. ");
                 }
             }
@@ -142,23 +176,27 @@ public class GA {
         return child;
     }
 
-    private static void mutate(Population population, Paper paper) {
+    public static void mutate(Population population, Paper paper) {
+        Set<Problem> temp1 = new HashSet<>();
+        Set<Problem> temp2 = new HashSet<>();
         for (Problem p : paper.getProblemList()) {
             if (Math.random() < mutationRate) {
                 List<Problem> problemList = population.getProblemTypeListWithoutItself(p);
                 if (problemList.size() > 0) {
                     // get a problem randomly                   
-                    paper.getProblemList().remove(p);
+                    temp1.add(p);
                     int index = random.nextInt(problemList.size());
                     Problem problem = problemList.get(index);
                     while (paper.getProblemList().contains(problem)) {
                         index = random.nextInt(problemList.size());
                         problem = problemList.get(index);
                     }
-                    paper.getProblemList().add(problem);
+                    temp2.add(problem);
 
                 }
             }
         }
+        paper.getProblemList().removeAll(temp1);
+        paper.getProblemList().addAll(temp2);
     }
 }
