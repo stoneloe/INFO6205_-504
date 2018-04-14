@@ -78,7 +78,7 @@ public class Paper {
         Set<Integer> expectation = rule.getPoints();
         //join:
         result.retainAll(expectation);
-        KPCoverage = result.size() / expectation.size();
+        KPCoverage = (double)result.size() / expectation.size();
     }
 
     public double getKPCoverage() {
