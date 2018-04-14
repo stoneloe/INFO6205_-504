@@ -64,7 +64,7 @@ public class GA {
     public static Paper select(Population population) {
         Population pop = new Population();
         for (int i = 0; i < tournamentSize; i++) {
-            pop.getPapers().add(population.getPapers().get((int) (Math.random() * population.getPapers().size())));
+            pop.getPapers().add(population.getPapers().get((random.nextInt(population.getPapers().size()))));
         }
         return pop.getBestFitnessPaper();
     }
@@ -72,7 +72,7 @@ public class GA {
     public static Population selection(Population population) {
         Population pop = new Population();
         for (int i = 0; i < tournamentSize; i++) {
-            pop.getPapers().add(population.getPapers().get((int) (Math.random() * population.getPapers().size())));
+            pop.getPapers().add(population.getPapers().get((random.nextInt(population.getPapers().size()))));
         }
         return pop;
     }
@@ -81,19 +81,19 @@ public class GA {
         Set<Problem> temp1 = new HashSet<>();
         Set<Problem> temp2 = new HashSet<>();
         for (Problem p : paper.getProblemList()) {
-                List<Problem> problemList = population.getProblemTypeListWithoutItself(p);
-                if (problemList.size() > 0) {
-                    // get a problem randomly                   
-                    temp1.add(p);
-                    int index = random.nextInt(problemList.size());
-                    Problem problem = problemList.get(index);
-                    while (paper.getProblemList().contains(problem)) {
-                        index = random.nextInt(problemList.size());
-                        problem = problemList.get(index);
-                    }
-                    temp2.add(problem);
-
+            List<Problem> problemList = population.getProblemTypeListWithoutItself(p);
+            if (problemList.size() > 0) {
+                // get a problem randomly                   
+                temp1.add(p);
+                int index = random.nextInt(problemList.size());
+                Problem problem = problemList.get(index);
+                while (paper.getProblemList().contains(problem)) {
+                    index = random.nextInt(problemList.size());
+                    problem = problemList.get(index);
                 }
+                temp2.add(problem);
+
+            }
         }
         paper.getProblemList().removeAll(temp1);
         paper.getProblemList().addAll(temp2);

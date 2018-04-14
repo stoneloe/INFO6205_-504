@@ -37,6 +37,8 @@ public class GATest {
     public void test2_mutation(){
         Paper paper = population.getPapers().get(3);
         int num1 = paper.getProblemCount();
+        paper.setKPCoverage(paperRule);
+        double kp1 = paper.getKPCoverage();
         double d1 = paper.getDifficulty();
         List<Integer> id1 = new ArrayList<>();
         for(Problem p : paper.getProblemList()){
@@ -45,12 +47,15 @@ public class GATest {
         
         GA.mutation(population, paper);
         int num2 = paper.getProblemCount();
+        paper.setKPCoverage(paperRule);
+        double kp2 = paper.getKPCoverage();
         double d2 = paper.getDifficulty();
         List<Integer> id2 = new ArrayList<>();
         for(Problem p : paper.getProblemList()){
             id2.add(p.getId());
         }
         assertEquals(num1, num2);
+        assertNotEquals(kp1, kp2);
         assertNotEquals(d1, d2);
     }
     
@@ -68,12 +73,21 @@ public class GATest {
             }
         Paper child = GA.crossover(paper1, paper2, paperRule, population);
         double d3 = child.getDifficulty();
+        child.setAdaptationDegree(paperRule,GlobalWeight.KP_WEIGHT, GlobalWeight.DIFFCULTY_WEIGHt);
         double f3 = child.getAdaptationDegree();
         assertNotEquals(d1, d3);
         assertNotEquals(d2, d3);
         assertNotEquals(f1, f3);
-        assertNotEquals(f2, f3);
+        assertNotEquals(f2, f3);        
+    }
+    
+    @Test
+    public void test4_evolution(){
+        Population newPopulation = GA.evolvePopulation(population, paperRule);
+        double fitness1 = population.getBestFitnessPaper().getAdaptationDegree();
+        double fitness2 = newPopulation.getBestFitnessPaper().getAdaptationDegree();
         
+        assertThat(fitness2, Matchers.greaterThanOrEqualTo(fitness1));
     }
     
 }
