@@ -8,7 +8,7 @@ import org.junit.Test;
 import PaperGeneration.Paper;
 import PaperGeneration.Population;
 import PaperGeneration.Rule;
-import com.sun.javafx.fxml.expression.Expression;
+import org.hamcrest.Matchers;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -31,11 +31,12 @@ public class PopulationTest {
     @Test
     public void test2_Sort(){
         Paper bestPaper = population.getBestFitnessPaper();
-        
+        assertThat(bestPaper.getAdaptationDegree(), Matchers.greaterThan(population.getPapers().get(1).getAdaptationDegree()));
     }
     
-    Population population = getPopulation();
     Rule paperRule = getRule();
+    Population population = getPopulation();
+    
     
     public Rule getRule(){
         Rule rule = new Rule();
