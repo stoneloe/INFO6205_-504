@@ -48,6 +48,8 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         maxtimesTextField = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        expectedFitnessTextField = new javax.swing.JTextField();
         ComposeButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -129,25 +131,41 @@ public class MainJFrame extends javax.swing.JFrame {
 
         maxtimesTextField.setText("100");
 
+        jLabel14.setText("Expected Adaptation:");
+
+        expectedFitnessTextField.setText("0.98");
+        expectedFitnessTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                expectedFitnessTextFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PaperAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(maxtimesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(expectedFitnessTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(PaperAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(maxtimesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
@@ -155,7 +173,11 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PaperAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(maxtimesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(expectedFitnessTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         ComposeButton.setText("Compose Paper>>");
@@ -194,7 +216,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ComposeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -423,7 +445,7 @@ public class MainJFrame extends javax.swing.JFrame {
         
         //evolve parameters:
         int size = Integer.parseInt(PaperAmountTextField.getText());
-        double adaptation = 0.98; 
+        double adaptation = Double.parseDouble(expectedFitnessTextField.getText()); 
         int count = 0;
         int runMax = Integer.parseInt(maxtimesTextField.getText());
         int run = runMax;
@@ -441,6 +463,7 @@ public class MainJFrame extends javax.swing.JFrame {
 //            System.out.println("First adpation degree: " + population.getBestFitnessPaper().getAdaptationDegree());
             
             DefaultTableModel dtm = (DefaultTableModel) processJtable.getModel();
+            dtm.setRowCount(0);
             while (count < run && population.getBestFitnessPaper().getAdaptationDegree() < adaptation) {
                 count++;
                 population = GA.evolvePopulation(population, rule);
@@ -451,7 +474,7 @@ public class MainJFrame extends javax.swing.JFrame {
             
             Paper finalPaper = population.getBestFitnessPaper();
             if(finalPaper.getAdaptationDegree()<adaptation){
-                resultText.setText("<html>Unable to get the perfect paper after 100 evolution.<br>You can back to adjust the parameters</html>");
+                resultText.setText("<html>Unable to get the perfect paper after "+ run +" evolution.<br>You can back to adjust the parameters</html>");
             }else{
                 resultText.setText("Get the perfect paper in "+count+" generation");
             }
@@ -466,6 +489,10 @@ public class MainJFrame extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_ComposeButtonActionPerformed
+
+    private void expectedFitnessTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expectedFitnessTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_expectedFitnessTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -508,6 +535,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField GradeTextField;
     private javax.swing.JTextField PaperAmountTextField;
     private javax.swing.JTextField diffTextfield;
+    private javax.swing.JTextField expectedFitnessTextField;
     private javax.swing.JLabel expecteddifficultyText;
     private javax.swing.JTextField fitnessTextField;
     private javax.swing.JTextField idtextfield;
@@ -517,6 +545,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
