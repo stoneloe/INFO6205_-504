@@ -53,8 +53,7 @@ public class GATest {
         }
         Collections.sort(id1);
         Collections.sort(id2);
-        
-        System.out.println(id1.toString()+"\n"+id2.toString());
+
         assertEquals(num1, num2);
         assertEquals(score1, score2);
     }
