@@ -422,7 +422,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Elvolution Result", jPanel3);
+        jTabbedPane1.addTab("Evolution Result", jPanel3);
 
         getContentPane().add(jTabbedPane1, java.awt.BorderLayout.LINE_START);
 
