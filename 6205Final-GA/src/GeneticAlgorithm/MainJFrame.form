@@ -96,7 +96,7 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder justification="2" position="2" title="Costomize Paper">
+                    <TitledBorder justification="2" position="2" title="Customize Paper">
                       <Font PropertyName="font" name="Lucida Grande" size="18" style="0"/>
                     </TitledBorder>
                   </Border>
@@ -402,7 +402,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Grande" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Evoluation Process"/>
+                <Property name="text" type="java.lang.String" value="Evolution Process"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
