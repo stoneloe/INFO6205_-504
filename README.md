@@ -4,8 +4,8 @@ This project is to figure out a methodology to `compose test paper automatically
 In our project, entities in the process of composing paper like `problem`, `paper`, `population`(paper generation/a list of papers) are mapped into basic concept of genetic algorithm like `gene`, `chromsome`, `population`, then papers are generated and evolved based on specific rules and expectations. Finally, we will get the opitmized result. The following images are user interfaces to display input and output.
 ***
 <p align="center">
-<img src="https://github.com/stoneloe/INFO6205_-504/blob/master/images/pane1.png" width="49%" alt="Settings"  />
-<img src="https://github.com/stoneloe/INFO6205_-504/blob/master/images/pane2.png" width="49%" alt="Result" />
+<img src="https://github.com/stoneloe/INFO6205_-504/blob/master/images/Jpanel1.png" width="49%" alt="Settings"  />
+<img src="https://github.com/stoneloe/INFO6205_-504/blob/master/images/Jpanel2.png" width="49%" alt="Result" />
 </p>
 
 ***
