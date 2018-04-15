@@ -82,7 +82,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setText("Auto-Composing Test Paper");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Costomerize Paper", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Lucida Grande", 0, 18))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Costomize Paper", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Lucida Grande", 0, 18))); // NOI18N
 
         jLabel4.setText("Difficulty Degree:");
 
@@ -226,14 +226,14 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Customerize Paper", jPanel1);
+        jTabbedPane1.addTab("Customize Paper", jPanel1);
 
         processJtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Generation", "Adaptation Degree"
+                "Generation", "Fitness"
             }
         ) {
             Class[] types = new Class [] {
