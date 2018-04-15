@@ -35,8 +35,8 @@
         <Container class="javax.swing.JPanel" name="jPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Customerize Paper">
-                <Property name="tabTitle" type="java.lang.String" value="Customerize Paper"/>
+              <JTabbedPaneConstraints tabName="Customize Paper">
+                <Property name="tabTitle" type="java.lang.String" value="Customize Paper"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -96,7 +96,7 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder justification="2" position="2" title="Costomerize Paper">
+                    <TitledBorder justification="2" position="2" title="Costomize Paper">
                       <Font PropertyName="font" name="Lucida Grande" size="18" style="0"/>
                     </TitledBorder>
                   </Border>
@@ -365,7 +365,7 @@
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="2" rowCount="0">
                         <Column editable="false" title="Generation" type="java.lang.Integer"/>
-                        <Column editable="false" title="Adaptation Degree" type="java.lang.Double"/>
+                        <Column editable="false" title="Fitness" type="java.lang.Double"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
