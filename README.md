@@ -28,11 +28,11 @@ Unit adaptation: `f = 1-(1-M/N)*f1-|EP-P|*f2`<br>
 * __Evolution mechanism: GA class__<br> 
 In `GA` class, we defined the process of evolution:<br> 
 1. Initialize population based on given rules.
-2. Elitism: the best fitness paper could be added to the next generation directly.
-3. Select 'father' and 'mother' by select function(select 5 papers randomly and return the best fitness paper among these 5 units)
-4. Crossover process to generate new paper.(Select a section with the same score to exchange from father and mother)
-5. The new generation mutate in specific mutateRate.(Select a gene/problem randomly to change with another gene had the same score)
-6. Repeat evolution and get expect result
+2. Elitism: the current fittest member of the population is always propagated to the next generation.
+3. Select parents by select function(generate tournament array randomly and return the best fitness paper in tournament array)
+4. Crossover process to generate new paper using multi points.(Select gene segments with the same score to swap between parents)
+5. The gene mutate at specific mutatation rates.(A gene(problem) is replace by another which has the same score and type)
+6. Repeat evolution and get best result.
 
 ## References
 > https://towardsdatascience.com/introduction-to-genetic-algorithms-including-example-code-e396e98d8bf3<br>
