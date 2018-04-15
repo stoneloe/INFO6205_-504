@@ -1,5 +1,5 @@
 # GA Implementation of Auto-Composing Test Paper
-This project is to figure out a way to `compose test paper automatically` based on genetic algorithm. Like extracting 40 problems randomly from problem database to compose a paper whose total score is 100, expect total difficulty is 0.72 and knowledge points coverage is 0.8.<br> 
+This project is to figure out a methodology to `compose test paper automatically` based on genetic algorithm. Like extracting 40 problems randomly from problem database to compose a paper whose total score is 100, total expected difficulty is 0.72 and knowledge points coverage is 0.8.<br> 
 In our project, entities in the process of composing paper like `problem`, `paper`, `population`(paper generation/a list of papers) are mapped into basic concept of genetic algorithm like `gene`, `chromsome`, `population`, then papers are generated and evolved based on specific rules and expectations. Finally, we will get the opitmized result. The following pictures are user interfaces to display input and output.
 ***
 <p align="center">
