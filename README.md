@@ -3,8 +3,8 @@ This project is going to figure out a way to `compose test paper automatically` 
 In our project, entities in the process of composing paper like `problem`, `paper`, `population`(paper generation/a list of papers) are mapped into basic concept of genetic algorithm like `gene`, `unit`, `population`, then papers generated and envolved based on specific rules and expectations. Finally, the opitmized result would be got. The test final output is showed up below.
 ***
 <p align="center">
-<img src="https://github.com/xiaogehou/INFO6205_-504/blob/master/images/settings.jpg" width="49%" alt="Settings"  />
-<img src="https://github.com/xiaogehou/INFO6205_-504/blob/master/images/result.jpg" width="49%" alt="Result" />
+<img src="https://github.com/stoneloe/INFO6205_-504/blob/master/images/pane1.png" width="49%" alt="Settings"  />
+<img src="https://github.com/stoneloe/INFO6205_-504/blob/master/images/pane2.png" width="49%" alt="Result" />
 </p>
 
 ***
