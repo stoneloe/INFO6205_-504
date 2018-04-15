@@ -22,14 +22,14 @@ import org.hamcrest.Matchers;
  */
 public class PopulationTest {  
     @Test
-    public void test1_PaperScore() {      
+    public void test6_PaperScore() {      
         for (Paper p : population.getPapers()){
             assertEquals(p.getTotalScore(),paperRule.getTotal());
         }
     }
     
     @Test
-    public void test2_Sort(){
+    public void test7_Sort(){
         Paper bestPaper = population.getBestFitnessPaper();
         assertThat(bestPaper.getAdaptationDegree(), Matchers.greaterThan(population.getPapers().get(1).getAdaptationDegree()));
     }
