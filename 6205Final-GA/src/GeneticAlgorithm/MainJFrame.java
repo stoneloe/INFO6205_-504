@@ -82,7 +82,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setText("Auto-Composing Test Paper");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Costomize Paper", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Lucida Grande", 0, 18))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Customize Paper", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Lucida Grande", 0, 18))); // NOI18N
 
         jLabel4.setText("Difficulty Degree:");
 
@@ -261,7 +261,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel6.setText("Evolution Result");
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        jLabel7.setText("Evoluation Process");
+        jLabel7.setText("Evolution Process");
 
         initialTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
