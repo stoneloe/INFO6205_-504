@@ -103,7 +103,7 @@ public class GA {
     public static Paper crossover(Paper parent1, Paper parent2, Rule rule, Population pop) {
         Paper child = new Paper();
         // Save problems into list
-        List<Problem> paper1 = new ArrayList<>();
+        List<Problem> paper1 = new ArrayList<Problem>();
         for (Problem p : parent1.getProblemList()) {
             paper1.add(p);
         }

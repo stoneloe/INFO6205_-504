@@ -27,7 +27,7 @@ public class Paper {
     private Set<Problem> problemList;
 
     public Paper() {
-        this.problemList = new HashSet<>();
+        this.problemList = new HashSet<Problem>();
     }
 
     public int getId() {
@@ -71,7 +71,7 @@ public class Paper {
 
     //caculate KPCoverage: unitCoverage/expectCoverage
     public void setKPCoverage(Rule rule) {
-        Set<Integer> result = new HashSet<>();
+        Set<Integer> result = new HashSet<Integer>();
         for (Problem p : problemList) {
             result.addAll(p.getPoints());
         }
