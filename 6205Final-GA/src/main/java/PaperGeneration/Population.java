@@ -21,13 +21,13 @@ public class Population {
     private ProblemDB DB;
     
     public Population() {
-        papers = new ArrayList<>();
+        papers = new ArrayList<Paper>();
     }
 
     public Population(int populationSize, boolean initFlag, Rule rule) {
 
         DB = new ProblemDB();
-        papers = new ArrayList<>();
+        papers = new ArrayList<Paper>();
         int[] eachTypeCount = rule.getEachTypeCount();
 
         if (initFlag) {
@@ -92,7 +92,7 @@ public class Population {
     }
     
     public List<Problem> getProblemTypeListWithoutItself(Problem problem){
-        List<Problem> p = new ArrayList<>();
+        List<Problem> p = new ArrayList<Problem>();
         for(Problem prob : DB.getProblemDB()){
             if(prob.getType() == problem.getType() && prob.getScore() == problem.getScore()){
                 p.add(prob);

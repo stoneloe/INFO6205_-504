@@ -447,7 +447,7 @@ public class MainJFrame extends javax.swing.JFrame {
         rule.setTotal(Integer.parseInt(GradeTextField.getText()));
         double difficulty = Double.parseDouble(DifficultyTextField.getText());
         rule.setDifficulty(difficulty);
-        Set<Integer> pointset = new HashSet<>();
+        Set<Integer> pointset = new HashSet<Integer>();
         for(int i = 0; i < 20; i++){
             pointset.add((int) (Math.random() * 100 + 1));
         }        

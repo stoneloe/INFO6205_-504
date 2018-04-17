@@ -27,7 +27,7 @@ public class Problem {
     private Set<Integer> points;
 
     public Problem(){
-        points = new HashSet<>();
+        points = new HashSet<Integer>();
     }
     public int getId() {
         return id;
